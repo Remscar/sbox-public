@@ -703,7 +703,9 @@ internal class ConsoleWidget : Widget
 
 				EditorUtility.InspectorObject = ev.Arguments[i];
 			}
-			if ( anchor.StartsWith( "http://" ) || anchor.StartsWith( "https://" ) )
+
+
+			if ( Uri.TryCreate( anchor, UriKind.RelativeOrAbsolute, out var uri ) )
 			{
 				EditorUtility.OpenFile( anchor );
 			}
